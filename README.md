@@ -2,6 +2,8 @@
 
 Hello, this is my template for the master thesis at ULB in typst.
 
+There is an example of this template and what it renders in example.pdf (with the corresponding code in example.typ)
+
 To use it, you only need to download the template.typ and download the image of the ulb logo on the website of the master thesis.
 
 Then, in your main.typ, you need to put this at the beginning of your file:
