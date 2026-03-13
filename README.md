@@ -29,3 +29,9 @@ I also made a function to make equations easy:
 ) 
 
 ```
+
+Rendering of the equation:
+
+![alt text](docs/equation.png)
+
+
