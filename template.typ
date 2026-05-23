@@ -92,7 +92,7 @@ it
 
 
 #let title_page(author: "", advisor: "", promotor: "", title: "") = {
-  text(size: 16pt)[Faculty of sciences  #h(1fr) Departement of Computer Science]
+  text(size: 16pt)[Faculty of sciences  #h(1fr) Department of Computer Science]
 v(1fr)
 align(center )[#image("sceau-a-quadri.jpg", width: 40%)]
 v(1fr)
