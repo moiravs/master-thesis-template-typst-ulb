@@ -1,4 +1,6 @@
 
+
+
 #let styling(it) = {
 /////////////////////////////////////
 // Page
@@ -6,8 +8,10 @@
 set page(
   paper: "a4",
   number-align: center,
-  margin: 100pt,
+  margin: 85pt,
 )
+
+set heading(numbering: "1.1 ", supplement: [Chapter])
 
 set text(font: "New Computer Modern")
 
@@ -49,29 +53,33 @@ show selector.or(heading, table, grid, figure): it => {
 set heading(numbering: "1.1 ")
 
 show heading.where(level: 1): it => {  
-      if counter(heading).display() != "0" and it.body.text != "Bibliography" and it.body.text != "Abbreviations" and it.body.text != "Acknowledgments"  {
-      pagebreak()
-      grid(
-          columns: (1fr),
-          row-gutter: 1.2em,
-          [#text(size: 1.3em)[Chapter #counter(heading).display()]],
-          text(size: 1.5em)[#it.body],
-          []
-      )
-    } else {
-      text(size: 1.5em)[#it.body] 
-      "\n"
-    }
-} 
+  if counter(heading).display() != "0"  {
+    // Use the heading's custom supplement if set, otherwise default to "Chapter"
+    let prefix = if it.supplement == auto [Chapter] else { it.supplement }
+    
+    pagebreak()
+    grid(
+        columns: (1fr),
+        row-gutter: 1.2em,
+        [#text(size: 1.3em)[#prefix #counter(heading).display()]],
+        text(size: 1.5em)[#it.body],
+        []
+    )
+  } else {
+    text(size: 1.5em)[#it.body] 
+    "\n"
+  }
+}
+
 set heading(numbering: "1.1 ")
 
-show bibliography: set heading(numbering: none)
+show bibliography: set heading(numbering: none, outlined: false)
 
 /////////////////////////////////////
 // Equation
 /////////////////////////////////////
 
-show math.equation: set text(12pt)
+show math.equation: set text(11pt)
 
 /////////////////////////////////////
 // Equation
@@ -89,6 +97,8 @@ it
 
 
 }
+
+
 
 
 #let title_page(author: "", advisor: "", promotor: "", title: "") = {
@@ -155,5 +165,49 @@ import "@preview/showybox:2.0.4": showybox
 ) 
 #label(lab)
 ]
-    
+
+
+}
+
+
+/////////////////////////////////////
+// Acknowledgments
+/////////////////////////////////////
+
+#let acknowledgments(body) = {
+  set heading(outlined: false, supplement: none, numbering: none)
+  counter(heading).update(0)
+  set page(numbering: "1")
+  heading("Acknowledgments")
+  body
+}
+
+
+
+
+/////////////////////////////////////
+// Abbreviations
+/////////////////////////////////////
+
+#let abbreviations(body) = {
+  set heading(outlined: false, supplement: none, numbering: none)
+  counter(heading).update(0)
+  set page(numbering: "1")
+  heading("Abbreviations")
+  body
+
+  counter(heading).update(0)
+set page(numbering: "1")
+set math.equation(numbering: "(1)")
+}
+
+
+/////////////////////////////////////
+// Appendix
+/////////////////////////////////////
+
+#let appendix(body) = {
+  set heading(numbering: "A", supplement: [Appendix])
+  counter(heading).update(0) // Resets the counter so it starts at A
+  body
 }

@@ -16,7 +16,57 @@ Then, in your main.typ, you need to put this at the beginning of your file:
 #pagebreak()
 ```
 
-# Other functions not necessary but kinda cool to use
+## Acknowledgments
+
+```typ
+#acknowledgments()[
+  Thank you for everyone
+]
+```
+
+![Acknowledgments](docs/acknowledgments.png)
+
+## Abbreviations
+
+```typ
+#abbreviations()[
+  \
+#{
+  show table.cell: set text(15pt)
+  show table.cell.where(x: 0): set text(weight: "bold")
+  table(
+  columns: (20%, 80%),
+  stroke: none,
+  column-gutter: 5em,
+  row-gutter: 1.8em,
+  [3DGS], [3D Gaussian Splatting],
+  [BRDF], [Bidirectional Reflectance Distribution Function],
+  [BVH], [Bounding Volume Hierarchy],
+  [GPU], [Graphical Processing Unit],
+  [MVS], [Multi-View Stereo],
+  [NeRF], [Neural Radiance Field],
+  [SfM], [Structure-from-Motion],
+)
+}
+]
+```
+![Abbreviations](docs/abbr.png)
+
+
+## Appendix
+
+![Appendix](docs/appendix.png)
+```typ
+#appendix[
+  = Table
+
+
+  = Notations
+]
+
+```
+
+## Equations
 
 I also made a function to make equations easy:
 

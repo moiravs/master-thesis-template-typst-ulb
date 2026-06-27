@@ -6,16 +6,14 @@
 #pagebreak()
 
 
-= Acknowledgments <ack>
+#acknowledgments()[
+
+  Thank you for everyone
+]
 
 
-
-#counter(heading).update(0)
-#set page(numbering: "1")
-
-= Abbreviations <abbr>
-
-\
+#abbreviations()[
+  \
 #{
 
   show table.cell: set text(15pt)
@@ -26,13 +24,17 @@ table(
   column-gutter: 5em,
   row-gutter: 1.8em,
   [3DGS], [3D Gaussian Splatting],
+  [BRDF], [Bidirectional Reflectance Distribution Function],
+  [BVH], [Bounding Volume Hierarchy],
+  [GPU], [Graphical Processing Unit],
+  [MVS], [Multi-View Stereo],
+  [NeRF], [Neural Radiance Field],
+  [SfM], [Structure-from-Motion],
 )
 
 }
+]
 
-
-#counter(heading).update(0)
-#set page(numbering: "1")
 
 = Introduction
 
@@ -46,7 +48,17 @@ A little reference @gpugems.
     lab: "eqt:rendering_eqt" // the label of the equation for reference
 ) 
 
+
+
+#appendix[
+  = Table
+
+
+  = Notations
+]
+
 #pagebreak()
+
 
 #let values = (
   "bib/cuda.bib",
